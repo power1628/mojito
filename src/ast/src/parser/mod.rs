@@ -1,5 +1,6 @@
 use crate::error::Error;
-use pest::{iterators::Pair, Parser as P};
+#[allow(unused_imports)]
+use pest::Parser as P;
 
 #[derive(Parser)]
 #[grammar = "parser/cypher.pest"]

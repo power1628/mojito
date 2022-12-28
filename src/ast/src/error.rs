@@ -6,4 +6,6 @@ use thiserror::Error;
 pub enum Error {
     #[error("pest parsing error")]
     PestError(#[from] pest::error::Error<Rule>),
+    #[error("parse error")]
+    ParseError { span: (usize, usize), msg: String },
 }
