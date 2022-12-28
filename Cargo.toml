@@ -1,0 +1,15 @@
+[workspace]
+members = [
+  "src/common",
+  "src/catalog",
+  "src/ast",
+]
+
+
+
+[profile.dev]
+lto = 'off'
+
+[profile.release]
+debug = true
+
