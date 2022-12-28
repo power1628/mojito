@@ -1,4 +1,4 @@
-use crate::ast::expr::{NodePattern, RelationshipPattern};
+use crate::ast::pattern::{NodePattern, RelationshipPattern};
 
 pub struct MatchClause {
     is_optional: bool,

@@ -84,7 +84,7 @@ fn parse_atom(pair: Pair<'_, Rule>) -> Result<Box<Expr>> {
     }
 }
 
-fn parse_literal(pair: Pair<'_, Rule>) -> Result<Literal> {
+pub(crate) fn parse_literal(pair: Pair<'_, Rule>) -> Result<Literal> {
     if let Some(sub_pair) = pair.into_inner().next() {
         match sub_pair.as_rule() {
             Rule::StringLiteral => parse_string(sub_pair).map(|v| Literal::String(v)),
@@ -105,7 +105,7 @@ fn parse_literal(pair: Pair<'_, Rule>) -> Result<Literal> {
     }
 }
 
-fn parse_variable(pair: Pair<'_, Rule>) -> Result<String> {
+pub(crate) fn parse_variable(pair: Pair<'_, Rule>) -> Result<String> {
     if let Some(sub_pair) = pair.into_inner().next() {
         match sub_pair.as_rule() {
             Rule::SymbolicName => parse_symbolic_name(sub_pair),
@@ -117,12 +117,12 @@ fn parse_variable(pair: Pair<'_, Rule>) -> Result<String> {
 }
 
 /// TODO(pgao) EscapedSymbolicName parsing
-fn parse_symbolic_name(pair: Pair<'_, Rule>) -> Result<String> {
+pub(crate) fn parse_symbolic_name(pair: Pair<'_, Rule>) -> Result<String> {
     Ok(String::from(pair.as_str()))
 }
 
 /// Parse MapLiteral
-fn parse_map_literal(pair: Pair<'_, Rule>) -> Result<Literal> {
+pub(crate) fn parse_map_literal(pair: Pair<'_, Rule>) -> Result<Literal> {
     let mut keys = vec![];
     let mut values = vec![];
     let mut pair_iter = pair.into_inner();
